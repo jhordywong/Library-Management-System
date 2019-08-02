@@ -43,7 +43,7 @@
          
           <li class="nav-item dropdown d-xl-inline-block">
             <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-              <span class="profile-text">Hello, {{Auth::user()->name}} !</span>
+              <span class="profile-text">Hello, {{Auth::user()->username}} !</span>
                 @if(Auth::user()->gambar == '')
                   <img class="img-xs rounded-circle"  src="{{asset('images/user/default.png')}}" alt="profile image">
                 @else
@@ -58,6 +58,9 @@
               </a>
               <a class="dropdown-item" style="margin-top: 20px;" href="{{route('user.edit', Auth::user()->id)}}">
                Edit Profile
+              </a>
+              <a class="dropdown-item" style="margin-top:5px;" href="{{route('anggota.edit', Auth::user()->id)}}">
+               Edit Keanggotaan
               </a>
               <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

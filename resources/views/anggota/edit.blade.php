@@ -93,6 +93,7 @@ $(document).ready(function() {
                             </div>
                         </div>
 
+                        @if(Auth::user()->level == 'admin')
                         <div class="form-group{{ $errors->has('user_id') ? ' has-error' : '' }} " style="margin-bottom: 20px;">
                             <label for="user_id" class="col-md-4 control-label">User Login</label>
                             <div class="col-md-6">
@@ -104,6 +105,8 @@ $(document).ready(function() {
                             </select>
                             </div>
                         </div>
+                        @endif
+
                         <button type="submit" class="btn btn-primary" id="submit">
                                     Ubah
                         </button>

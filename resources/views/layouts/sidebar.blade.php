@@ -12,7 +12,7 @@
                 @endif
                 </div>
                 <div class="text-wrapper">
-                  <p class="profile-name">{{Auth::user()->name}}</p>
+                  <p class="profile-name">{{Auth::user()->username}}</p>
                   <div>
                     <small class="designation text-muted" style="text-transform: uppercase;letter-spacing: 1px;">{{ Auth::user()->level }}</small>
                     <span class="status-indicator online"></span>

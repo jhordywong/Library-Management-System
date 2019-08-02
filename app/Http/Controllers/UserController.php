@@ -65,7 +65,7 @@ class UserController extends Controller
         }
 
         $this->validate($request, [
-            'name' => 'required|string|max:255',
+     
             'username' => 'required|string|max:20|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
@@ -84,7 +84,7 @@ class UserController extends Controller
         }
 
         User::create([
-            'name' => $request->input('name'),
+      
             'username' => $request->input('username'),
             'email' => $request->input('email'),
             'level' => $request->input('level'),
@@ -155,7 +155,7 @@ class UserController extends Controller
             $user_data->gambar = $fileName;
         }
 
-        $user_data->name = $request->input('name');
+        $user_data->username = $request->input('username');
         $user_data->email = $request->input('email');
         if($request->input('password')) {
         $user_data->level = $request->input('level');
