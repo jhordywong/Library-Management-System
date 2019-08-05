@@ -18,7 +18,7 @@
 
 <div class="main">
     <section class="signup">
-        <!-- <img src="images/signup-bg.jpg" alt=""> -->
+        <!-- <img src="images/blurbook.jpg" alt=""> -->
 
         <div class="container">
             <div class="signup-content">
@@ -96,20 +96,20 @@
                         </div>
 
                         <div class="form-group">
-                            <input type="submit" name="submit" id="submit" class="form-submit" value="Sign up" />
-                            <a href="/login"></a>
+                        <a href="/login" class="btn btn-light pull-right"><input type="submit" name="submit" id="submit" class="form-submit" value="Sign up" /></a>
+
                         </div>
                         <div class="form-group">
                             <input type="reset" name="submit" id="submit" class="form-submit" value="Reset" />
                         </div>
+                        <p class="loginhere">
+                        Have already an account ? <a href="/login" class="btn btn-light pull-right">Login Here</a>
+                        </p>   
                     </div>
                 </div>
                 </div>
                 </div>
-                </form>
-                <p class="loginhere">
-                        Have already an account ? <a href="/login" class="btn btn-light pull-right">Login Here</a>
-                </p>   
+                </form> 
             </div>
         </div>
     </section>
