@@ -1,99 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
 
-<form method="POST" action="/register" enctype="multipart/form-data">
-    {{ csrf_field() }}
-<div class="row">
-    <div class="col-md-12 d-flex align-items-stretch grid-margin">
-      <div class="row flex-grow">
-        <div class="col-12">
-          <div class="card">
-            <div class="card-body">
-              <h4 class="card-title">REGISTER</h4>
-              
-                <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                    <label for="name" class="col-md-4 control-label">Full Name</label>
-                    <div class="col-md-6">
-                        <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required>
-                        @if ($errors->has('name'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('name') }}</strong>
-                            </span>
-                        @endif
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up Form by Colorlib</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="css/stylereg.css">
+</head>
+
+<body>
+
+<div class="main">
+    <section class="signup">
+        <!-- <img src="images/signup-bg.jpg" alt=""> -->
+
+        <div class="container">
+            <div class="signup-content">
+                <form method="POST" id="signup-form" class="signup-form" action="/register" enctype="multipasrt/form-data">
+                    {{ csrf_field() }}
+                    <h2 class="card-title">REGISTER</h2>
+                    
+                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-input" name="name" placeholder="Your Name" value="{{ old('name') }}" required>
+                                @if ($errors->has('name'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
+                            <div class="col-md-6">
+                                <input id="username" type="text" class="form-input" name="username" placeholder="Your Username" value="{{ old('username') }}" required>
+                                @if ($errors->has('username'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('username') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-input" name="email" placeholder="Your Mail" value="{{ old('email') }}" required>
+                                @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-6">
+                                <img class="product" width="200" height="200" />
+                                <input type="file" class="uploads form-input" style="margin-top: 20px;" name="gambar">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group {{ $errors->has('level') ? ' has-error' : '' }}">
+                            <div class="col-md-6">
+                                <select class="custom-select" id="inputGroupSelect02">
+                                    <option selected>Level...</option>
+                                    <option value="1">SuperAdmin</option>
+                                    <option value="2">Admin</option>
+                                    <option value="3">User</option>
+                                </select> 
+                                
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-input" placeholder="Your Password" onkeyup='check();' name="password" required>
+                                @if ($errors->has('password'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
+                            <div class="col-md-6">
+                                <input id="confirm_password" type="password" placeholder="Confirm Password" onkeyup="check()" class="form-input" name="password_confirmation" required>
+                                <span id='message'></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="submit" name="submit" id="submit" class="form-submit" value="Sign up" />
+                        </div>
+                        <div class="form-group">
+                            <input type="reset" name="submit" id="submit" class="form-submit" value="Reset" />
+                        </div>
                     </div>
                 </div>
-                <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
-                    <label for="username" class="col-md-4 control-label">Username</label>
-                    <div class="col-md-6">
-                        <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" required>
-                        @if ($errors->has('username'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('username') }}</strong>
-                            </span>
-                        @endif
-                    </div>
                 </div>
-
-                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                    <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-                    <div class="col-md-6">
-                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-                        @if ($errors->has('email'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('email') }}</strong>
-                            </span>
-                        @endif
-                    </div>
                 </div>
-
-                <div class="form-group">
-                    <label for="email" class="col-md-4 control-label">Gambar</label>
-                    <div class="col-md-6">
-                        <img class="product" width="200" height="200" />
-                        <input type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar">
-                    </div>
-                </div>
-
-
-                <div class="form-group{{ $errors->has('level') ? ' has-error' : '' }}">
-                    <label for="level" class="col-md-4 control-label">Level</label>
-                    <div class="col-md-6">
-                    <select class="form-control" name="level" required="">
-                        <option value=""></option>
-                        <option value="user">User</option>
-                    </select>
-                    </div>
-                </div>
-
-
-                <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                    <label for="password" class="col-md-4 control-label">Password</label>
-                    <div class="col-md-6">
-                        <input id="password" type="password" class="form-control" onkeyup='check();' name="password" required>
-                        @if ($errors->has('password'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('password') }}</strong>
-                            </span>
-                        @endif
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-                    <div class="col-md-6">
-                        <input id="confirm_password" type="password" onkeyup="check()" class="form-control" name="password_confirmation" required>
-                        <span id='message'></span>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary" id="submit">
-                            Register
-                </button>
-                <button type="reset" class="btn btn-danger">
-                            Reset
-                </button>
-                <a href="/login" class="btn btn-light pull-right">has an account? login now</a>
+                </form>
+                <p class="loginhere">
+                        Have already an account ? <a href="/login" class="btn btn-light pull-right">Login Here</a>
+                </p>   
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-
+    </section>
 </div>
-</form>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="js/mainreg.js"></script>
+</body>
+</html>
