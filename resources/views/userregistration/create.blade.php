@@ -97,6 +97,7 @@
 
                         <div class="form-group">
                             <input type="submit" name="submit" id="submit" class="form-submit" value="Sign up" />
+                            <a href="/login"></a>
                         </div>
                         <div class="form-group">
                             <input type="reset" name="submit" id="submit" class="form-submit" value="Reset" />
